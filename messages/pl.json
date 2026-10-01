@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "title": "infoklasa — informatyka, której wygodnie się uczyć",
+    "description": "Teoria, testy i ćwiczenia z informatyki dla uczniów liceum — po ukraińsku, polsku i angielsku."
+  },
+  "common": {
+    "skip": "Przejdź do treści",
+    "close": "Zamknij"
+  },
+  "nav": {
+    "main": "Nawigacja główna",
+    "home": "Start",
+    "catalog": "Katalog tematów",
+    "matura": "Matura",
+    "glossary": "Słowniczek",
+    "news": "Aktualności",
+    "search": "Szukaj",
+    "login": "Zaloguj się",
+    "language": "Język"
+  },
+  "theme": {
+    "label": "Motyw",
+    "auto": "Auto",
+    "light": "Jasny",
+    "dark": "Ciemny"
+  },
+  "a11y": {
+    "open": "Ustawienia dostępności",
+    "title": "Dostępność",
+    "large": "Większa czcionka",
+    "contrast": "Wysoki kontrast",
+    "dyslexia": "Czcionka dla dyslektyków",
+    "spacing": "Większe odstępy",
+    "motion": "Wyłącz animacje",
+    "reset": "Resetuj wszystko"
+  },
+  "search": {
+    "placeholder": "Szukaj tematu, pojęcia lub testu…",
+    "button": "Szukaj",
+    "popularChips": "Często szukane:",
+    "popular": "Popularne",
+    "results": "Wyniki",
+    "empty": "Nic nie znaleziono. Spróbuj krótszego słowa lub otwórz słowniczek.",
+    "hint": "↑↓ — wybór · Enter — otwórz · Esc — zamknij"
+  },
+  "announcement": {
+    "label": "Ogłoszenia",
+    "important": "Ważne",
+    "text": "10–17 października — etap szkolny olimpiady informatycznej",
+    "more": "Wszystkie ogłoszenia"
+  },
+  "hero": {
+    "title": "Informatyka, której wygodnie się uczyć",
+    "sub": "Teoria, testy i ćwiczenia do każdego tematu — w jednym miejscu. Przeczytaj i od razu sprawdź się."
+  },
+  "guest": {
+    "title": "Twoje postępy — w profilu",
+    "text": "Zaloguj się e-mailem — bez hasła. Zapiszemy przeczytane tematy, wyniki testów i zakładki.",
+    "cta": "Zaloguj się e-mailem"
+  },
+  "banner": {
+    "kicker": "Tydzień algorytmów",
+    "title": "Sortowanie na żywo: zobacz każdy krok",
+    "text": "Bąbelkowe, przez wstawianie, przez scalanie — porównaj, ile kroków wykonuje każdy algorytm.",
+    "cta": "Otwórz temat"
+  },
+  "sections": {
+    "title": "Działy",
+    "all": "Cały katalog",
+    "topics": "{count, plural, one {# temat} few {# tematy} many {# tematów} other {# tematu}}",
+    "glossaryCount": "A–Z · {count}",
+    "alg": "Algorytmy",
+    "prog": "Programowanie",
+    "net": "Sieci",
+    "db": "Bazy danych",
+    "hw": "Systemy komputerowe",
+    "sec": "Cyberbezpieczeństwo",
+    "matura": "Przygotowanie do matury",
+    "gloss": "Słowniczek"
+  },
+  "materials": {
+    "title": "Nowe materiały",
+    "grade": "Klasa {n}",
+    "minutes": "{n} min",
+    "missing": "Brak tłumaczenia · pokazano {lang}"
+  },
+  "types": {
+    "material": "Materiał",
+    "test": "Test",
+    "exercise": "Ćwiczenie",
+    "task": "Zadanie",
+    "term": "Pojęcie",
+    "topic": "Temat"
+  },
+  "levels": {
+    "basic": "Podstawowy",
+    "medium": "Średni",
+    "advanced": "Rozszerzony"
+  },
+  "cookie": {
+    "text": "Używamy tylko niezbędnych plików cookies i anonimowych statystyk bez danych osobowych.",
+    "policy": "Polityka prywatności",
+    "accept": "Akceptuję",
+    "necessary": "Tylko niezbędne",
+    "settings": "Ustawienia",
+    "save": "Zapisz wybór",
+    "essentialInfo": "Niezbędne: język, motyw — zawsze włączone",
+    "stats": "Anonimowe statystyki odwiedzin"
+  },
+  "footer": {
+    "about": "O autorze",
+    "privacy": "Prywatność i cookies",
+    "feedback": "Napisz do nauczyciela",
+    "made": "Stworzone przez nauczyciela informatyki · Kraków"
+  },
+  "soon": {
+    "title": "Dział w przygotowaniu",
+    "text": "Ta strona nie jest jeszcze gotowa. Wróć później — a na razie wszystko, co najważniejsze, jest na stronie głównej.",
+    "home": "Na stronę główną"
+  }
+}

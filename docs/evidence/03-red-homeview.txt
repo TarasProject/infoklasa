@@ -1,0 +1,35 @@
+$ vitest run
+
+ RUN  v5.0.3 G:/crash_course_agentic_engineering_2026/myprojectfull/infoklasa
+
+ ❯ components/HomeView.test.tsx (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  components/HomeView.test.tsx [ components/HomeView.test.tsx ]
+Error: Failed to resolve import "./HomeView" from "components/HomeView.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: G:/crash_course_agentic_engineering_2026/myprojectfull/infoklasa/components/HomeView.test.tsx:8:21
+  5  |  import pl from "@/messages/pl.json";
+  6  |  import en from "@/messages/en.json";
+  7  |  import HomeView from "./HomeView";
+     |                        ^
+  8  |  var _jsxFileName = "G:/crash_course_agentic_engineering_2026/myprojectfull/infoklasa/components/HomeView.test.tsx";
+  9  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+ ❯ TransformPluginContext._formatLog node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:8736:39
+ ❯ TransformPluginContext.error node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:8733:14
+ ❯ normalizeUrl node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:26423:18
+ ❯ node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:26493:30
+ ❯ TransformPluginContext.transform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:26459:4
+ ❯ EnvironmentPluginContainer.transform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:8515:14
+ ❯ loadAndTransform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:19998:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 5 passed (6)
+      Tests  38 passed (38)
+   Start at  01:56:04
+   Duration  1.34s (environment 88%, transform 8%, import 2%, tests 1%, worker 1%)
+
+[ELIFECYCLE] Test failed. See above for more details.

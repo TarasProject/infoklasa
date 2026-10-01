@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>infoklasa · Зошит</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Lexend:wght@400;600&display=swap">
+<style>
+/* Variant A — «Зошит»: calm cool-paper ground, faint squared-notebook grid, one cobalt accent */
+:root{
+  color-scheme:light;
+  --bg:#F4F6FA; --surface:#FFFFFF; --surface-2:#EAEEF6; --ink:#141B2D; --muted:#566079; --line:#D8DEEA;
+  --accent:#2F54EB; --accent-ink:#FFFFFF; --accent-soft:#E4EAFF; --accent-text:#2446D6;
+  --grid:rgba(47,84,235,.075); --banner-bg:#141B2D; --banner-ink:#EEF1F8; --warn-bg:#FFF1D6; --warn-ink:#7A4B00;
+  --c-alg:#D9480F; --c-prog:#2B8A3E; --c-net:#1971C2; --c-db:#9C36B5; --c-hw:#0C8599; --c-sec:#E03131; --c-matura:#C2255C; --c-gloss:#495057;
+  --font-ui:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif; --font-mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+  --r-card:16px; --r-btn:10px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --bg:#0E1322; --surface:#161D30; --surface-2:#1F2842; --ink:#E8ECF6; --muted:#9AA4BE; --line:#2A3452;
+  --accent:#7D9BFF; --accent-ink:#0A0F20; --accent-soft:#1F2A52; --accent-text:#9DB3FF;
+  --grid:rgba(125,155,255,.07); --banner-bg:#1C2544; --banner-ink:#EEF1F8; --warn-bg:#3A2A0C; --warn-ink:#FFD58A;
+  --c-alg:#FF8A4C; --c-prog:#51CF66; --c-net:#4DABF7; --c-db:#DA77F2; --c-hw:#3BC9DB; --c-sec:#FF6B6B; --c-matura:#F783AC; --c-gloss:#ADB5BD;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0E1322; --surface:#161D30; --surface-2:#1F2842; --ink:#E8ECF6; --muted:#9AA4BE; --line:#2A3452;
+  --accent:#7D9BFF; --accent-ink:#0A0F20; --accent-soft:#1F2A52; --accent-text:#9DB3FF;
+  --grid:rgba(125,155,255,.07); --banner-bg:#1C2544; --banner-ink:#EEF1F8; --warn-bg:#3A2A0C; --warn-ink:#FFD58A;
+  --c-alg:#FF8A4C; --c-prog:#51CF66; --c-net:#4DABF7; --c-db:#DA77F2; --c-hw:#3BC9DB; --c-sec:#FF6B6B; --c-matura:#F783AC; --c-gloss:#ADB5BD;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-ui);font-size:1rem;line-height:1.55}
+a{color:inherit}
+h1,h2,h3{text-wrap:balance;margin:0}
+.wrap{max-width:1160px;margin-inline:auto;padding-inline:20px}
+@media (max-width:480px){.wrap{padding-inline:16px}}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top-row{display:flex;align-items:center;gap:16px;min-height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.1rem;letter-spacing:-.02em;text-decoration:none}
+.logo b{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--accent);color:var(--accent-ink);font-family:var(--font-mono);font-size:.95rem}
+.nav{display:flex;gap:4px;margin-left:12px}
+.nav a{padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:500;white-space:nowrap}
+.nav a:hover{color:var(--ink);background:var(--surface-2)}
+.nav a[aria-current]{color:var(--ink);font-weight:600}
+.tools{margin-left:auto;display:flex;align-items:center;gap:6px}
+.langs{display:flex;padding:3px;border-radius:10px;background:var(--surface-2)}
+.langs button{font:inherit;font-size:.8rem;font-weight:600;border:0;background:transparent;color:var(--muted);padding:5px 9px;border-radius:7px;cursor:pointer}
+.langs button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.ibtn{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;border:1px solid transparent;background:transparent;color:var(--ink);cursor:pointer}
+.ibtn:hover{background:var(--surface-2)}
+.btn{font:inherit;font-weight:600;display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 16px;border-radius:var(--r-btn);border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.07)}
+.avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-text);font-weight:700;font-size:.85rem}
+.mnav{display:none}
+.show-m{display:none}
+@media (max-width:900px){
+  .nav{display:none}
+  .mnav{display:flex;gap:6px;overflow-x:auto;padding:0 0 10px;scrollbar-width:none}
+  .mnav a{flex:none;padding:6px 12px;border-radius:99px;border:1px solid var(--line);text-decoration:none;font-size:.88rem;font-weight:500;color:var(--muted)}
+  .mnav a[aria-current]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .hide-m{display:none!important}
+  html:not(.is-auth) .show-m{display:inline-grid}
+}
+
+/* announcement strip */
+.ann{background:var(--warn-bg);color:var(--warn-ink);font-size:.92rem}
+.ann .wrap{display:flex;align-items:center;gap:12px;min-height:44px;padding-block:8px}
+.ann .tag{font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:6px;border:1px solid currentColor;flex:none}
+.ann p{margin:0;flex:1;min-width:0}
+.ann a{font-weight:600;white-space:nowrap}
+
+/* hero + search */
+.hero{position:relative;padding-block:56px 44px;text-align:center;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;background-position:center top;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(1.9rem,4.4vw,3.1rem);line-height:1.08;letter-spacing:-.03em;font-weight:800;max-width:17ch;margin-inline:auto}
+.hero h1 em{font-style:normal;color:var(--accent-text)}
+.hero .sub{color:var(--muted);font-size:1.08rem;max-width:52ch;margin:14px auto 28px}
+.search{display:flex;align-items:center;gap:12px;width:min(640px,100%);margin-inline:auto;min-height:62px;padding:0 10px 0 20px;border-radius:14px;border:2px solid var(--ink);background:var(--surface);color:var(--muted);font:inherit;font-size:1.05rem;text-align:left;cursor:text;box-shadow:5px 5px 0 var(--accent)}
+.search:hover{box-shadow:7px 7px 0 var(--accent)}
+.search > span:not(.go){flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.search .go{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:var(--accent-ink);border-radius:9px;padding:9px 14px;font-weight:600;font-size:.92rem}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:20px;font-size:.88rem;color:var(--muted)}
+.chips button{font:inherit;border:1px dashed var(--line);background:var(--surface);color:var(--ink);padding:4px 11px;border-radius:99px;cursor:pointer}
+.chips button:hover{border-style:solid;border-color:var(--accent)}
+
+/* sections */
+main{display:grid;gap:56px;padding-block:44px 64px}
+.sh{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:18px}
+.sh h2{font-size:1.45rem;letter-spacing:-.02em;font-weight:700}
+.sh a{color:var(--accent-text);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.sh a:hover{text-decoration:underline}
+
+/* banner */
+.banner{display:grid;grid-template-columns:1.1fr 1fr;border-radius:20px;overflow:hidden;background:var(--banner-bg);color:var(--banner-ink)}
+.banner .txt{padding:36px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.banner .k{font-family:var(--font-mono);font-size:.8rem;color:color-mix(in srgb,var(--banner-ink) 70%,var(--banner-bg));letter-spacing:.04em}
+.banner h2{font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.12;letter-spacing:-.02em}
+.banner p{margin:0;color:color-mix(in srgb,var(--banner-ink) 80%,var(--banner-bg));max-width:44ch}
+.banner .btn.primary{margin-top:6px}
+.banner .meta{margin-top:auto;padding-top:8px;font-size:.75rem;color:color-mix(in srgb,var(--banner-ink) 60%,var(--banner-bg))}
+.banner .viz{position:relative;min-height:260px;background:color-mix(in srgb,var(--banner-bg) 86%,var(--accent))}
+.banner canvas{position:absolute;inset:0;width:100%;height:100%}
+@media (max-width:760px){.banner{grid-template-columns:1fr}.banner .viz{min-height:180px;order:-1}.banner .txt{padding:24px}}
+
+/* continue / guest */
+.cont{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.ccard{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:18px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);text-decoration:none}
+.ccard:hover{border-color:var(--accent)}
+.sq{display:grid;place-items:center;width:46px;height:46px;border-radius:12px;color:var(--c);background:color-mix(in srgb,var(--c) 14%,transparent)}
+.sq .ico{width:24px;height:24px}
+.ccard .t{font-weight:600;line-height:1.3}
+.ccard .m{font-size:.84rem;color:var(--muted);margin-top:6px;display:flex;align-items:center;gap:10px}
+.bar{height:6px;width:100px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:inherit}
+.guest{display:flex;align-items:center;gap:20px;padding:22px 24px;border-radius:var(--r-card);border:1px dashed var(--accent);background:var(--accent-soft)}
+.guest .t{font-weight:700;font-size:1.1rem}
+.guest p{margin:4px 0 0;color:var(--muted);max-width:60ch}
+.guest .btn{margin-left:auto}
+@media (max-width:760px){.cont{grid-template-columns:1fr}.guest{flex-direction:column;align-items:flex-start}.guest .btn{margin-left:0}}
+
+/* section tiles */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.tile{display:flex;flex-direction:column;gap:14px;padding:18px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);text-decoration:none;transition:transform .15s,border-color .15s}
+.tile:hover{transform:translateY(-2px);border-color:var(--c)}
+.tile .n{font-weight:650;font-weight:600;line-height:1.25}
+.tile .c{font-size:.84rem;color:var(--muted);margin-top:auto}
+@media (max-width:900px){.tiles{grid-template-columns:repeat(2,1fr)}}
+
+/* new materials */
+.mats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mat{display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);text-decoration:none}
+.mat:hover{border-color:var(--ink)}
+.mat .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+.dot{width:9px;height:9px;border-radius:3px;background:var(--c);flex:none}
+.type{font-weight:600;color:var(--ink);background:var(--surface-2);padding:2px 8px;border-radius:6px}
+.mat h3{font-size:1.08rem;font-weight:650;font-weight:600;line-height:1.3}
+.mat .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.8rem;color:var(--muted)}
+.lvl{display:inline-flex;align-items:center;gap:6px}
+.lvl i{display:inline-flex;gap:2px;align-items:flex-end}
+.lvl i b{width:4px;border-radius:1px;background:var(--line)}
+.lvl i b:nth-child(1){height:6px}.lvl i b:nth-child(2){height:9px}.lvl i b:nth-child(3){height:12px}
+.lvl[data-l="1"] i b:nth-child(-n+1),.lvl[data-l="2"] i b:nth-child(-n+2),.lvl[data-l="3"] i b{background:var(--ink)}
+.tr-slot:empty{display:none}
+@media (max-width:900px){.mats{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.mats{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--line);padding-block:28px 40px;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center}
+footer a{text-decoration:none} footer a:hover{color:var(--ink);text-decoration:underline}
+.demo{margin-left:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.demo label{display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.demo input{width:18px;height:18px;accent-color:var(--accent)}
+.variants{display:inline-flex;gap:4px}
+.variants a{padding:3px 9px;border:1px solid var(--line);border-radius:7px;font-family:var(--font-mono);font-size:.8rem}
+.variants a[aria-current]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Перейти до змісту</a>
+
+<header class="top">
+  <div class="wrap">
+    <div class="top-row">
+      <a class="logo" href="#"><b>i/</b>infoklasa</a>
+      <nav class="nav" aria-label="Main">
+        <a href="#" aria-current="page" data-i18n="nav.home">Головна</a>
+        <a href="#" data-i18n="nav.catalog">Каталог тем</a>
+        <a href="#" data-i18n="nav.matura">Матура</a>
+        <a href="#" data-i18n="nav.glossary">Глосарій</a>
+        <a href="#" data-i18n="nav.news">Новини</a>
+      </nav>
+      <div class="tools">
+        <button class="ibtn" type="button" data-search-open data-icon="search" data-i18n-aria="nav.search"></button>
+        <div class="langs" role="group" data-i18n-aria="lang.label">
+          <button type="button" data-set-lang="uk">UA</button><button type="button" data-set-lang="pl">PL</button><button type="button" data-set-lang="en">EN</button>
+        </div>
+        <button class="ibtn" type="button" data-theme-cycle data-icon="theme"></button>
+        <button class="ibtn" type="button" data-a11y-open aria-expanded="false" aria-controls="x-a11y" data-icon="a11y" data-i18n-aria="a11y.open"></button>
+        <button class="btn primary only-guest hide-m" type="button" data-login><span data-i18n="login">Увійти</span></button>
+        <button class="ibtn only-guest show-m" type="button" data-login data-icon="user" data-i18n-aria="login" id="loginM"></button>
+        <a class="avatar only-auth" href="#" aria-label="Profile">МК</a>
+      </div>
+    </div>
+    <nav class="mnav" aria-label="Main (mobile)">
+      <a href="#" aria-current="page" data-i18n="nav.home">Головна</a>
+      <a href="#" data-i18n="nav.catalog">Каталог тем</a>
+      <a href="#" data-i18n="nav.matura">Матура</a>
+      <a href="#" data-i18n="nav.glossary">Глосарій</a>
+      <a href="#" data-i18n="nav.news">Новини</a>
+    </nav>
+  </div>
+</header>
+
+<div class="ann" role="region" data-i18n-aria="ann.label">
+  <div class="wrap">
+    <span class="tag" data-i18n="ann.important">Важливо</span>
+    <p data-i18n="ann.1">10–17 жовтня — шкільний етап олімпіади з інформатики</p>
+    <a href="#" class="hide-m" data-i18n="ann.more">Усі оголошення</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <h1 data-i18n="hero.title">Інформатика, яку зручно вчити</h1>
+    <p class="sub" data-i18n="hero.sub">Теорія, тести й вправи до кожної теми — в одному місці.</p>
+    <button class="search" type="button" data-search-open>
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <span data-i18n="search.ph">Знайди тему, термін або тест…</span>
+      <kbd class="kbd hide-m">Ctrl K</kbd>
+      <span class="go" data-i18n="search.btn">Пошук</span>
+    </button>
+    <div class="chips">
+      <span data-i18n="search.popular">Часто шукають:</span>
+      <button type="button" data-search-open data-seed data-i18n="g.rec">Рекурсія</button>
+      <button type="button" data-search-open data-seed data-i18n="tp.bin">Двійкова система</button>
+      <button type="button" data-search-open data-seed data-i18n="tp.loops">Цикли в Python</button>
+      <button type="button" data-search-open data-seed data-i18n="tp.osi">Модель OSI</button>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="wrap">
+
+  <!-- continue (logged in) / invite (guest) -->
+  <section aria-labelledby="h-cont" class="only-auth">
+    <div class="sh"><h2 id="h-cont" data-i18n="cont.title">Продовжити з місця, де зупинився</h2></div>
+    <div class="cont">
+      <a class="ccard" href="#" style="--c:var(--c-prog)">
+        <span class="sq" data-icon="prog"></span>
+        <span><span class="t" data-i18n="cont.1">Рекурсія: базовий випадок і стек викликів</span>
+          <span class="m"><span class="bar"><i style="width:60%"></i></span><span data-i18n="cont.read">Прочитано 60%</span></span></span>
+        <span class="btn"><span data-i18n="cont.go">Продовжити</span></span>
+      </a>
+      <a class="ccard" href="#" style="--c:var(--c-hw)">
+        <span class="sq" data-icon="hw"></span>
+        <span><span class="t" data-i18n="cont.2">Тест: двійкова система числення</span>
+          <span class="m"><span class="bar"><i style="width:70%"></i></span><span data-i18n="cont.score">7 з 10 правильних</span></span></span>
+        <span class="btn"><span data-i18n="cont.go">Продовжити</span></span>
+      </a>
+    </div>
+  </section>
+  <section class="only-guest guest" aria-labelledby="h-guest">
+    <div>
+      <div class="t" id="h-guest" data-i18n="guest.title">Твій прогрес — у профілі</div>
+      <p data-i18n="guest.text">Увійди через email — без пароля.</p>
+    </div>
+    <button class="btn primary" type="button" data-login><span data-i18n="guest.cta">Увійти через email</span></button>
+  </section>
+
+  <!-- admin banner -->
+  <section class="banner" aria-labelledby="h-banner">
+    <div class="txt">
+      <span class="k">// <span data-i18n="banner1.kicker">Тиждень алгоритмів</span></span>
+      <h2 id="h-banner" data-i18n="banner1.title">Сортування наживо: подивись на кожен крок</h2>
+      <p data-i18n="banner1.text">Бульбашкою, вставками, злиттям — порівняй кількість кроків.</p>
+      <a class="btn primary" href="#"><span data-i18n="banner1.cta">Відкрити тему</span></a>
+      <span class="meta" data-i18n="banner.admin">Банер · керує адміністратор</span>
+    </div>
+    <div class="viz"><canvas id="sortViz" aria-hidden="true"></canvas></div>
+  </section>
+
+  <!-- quick entry -->
+  <section aria-labelledby="h-sec">
+    <div class="sh"><h2 id="h-sec" data-i18n="sec.title">Розділи</h2><a href="#"><span data-i18n="new.all">Увесь каталог</span></a></div>
+    <div class="tiles">
+      <a class="tile" href="#" style="--c:var(--c-alg)"><span class="sq" data-icon="alg"></span><span class="n" data-i18n="sec.alg">Алгоритми</span><span class="c" data-plural="topic" data-count="24"></span></a>
+      <a class="tile" href="#" style="--c:var(--c-prog)"><span class="sq" data-icon="prog"></span><span class="n" data-i18n="sec.prog">Програмування</span><span class="c" data-plural="topic" data-count="38"></span></a>
+      <a class="tile" href="#" style="--c:var(--c-net)"><span class="sq" data-icon="net"></span><span class="n" data-i18n="sec.net">Мережі</span><span class="c" data-plural="topic" data-count="15"></span></a>
+      <a class="tile" href="#" style="--c:var(--c-db)"><span class="sq" data-icon="db"></span><span class="n" data-i18n="sec.db">Бази даних</span><span class="c" data-plural="topic" data-count="12"></span></a>
+      <a class="tile" href="#" style="--c:var(--c-hw)"><span class="sq" data-icon="hw"></span><span class="n" data-i18n="sec.hw">Комп'ютерні системи</span><span class="c" data-plural="topic" data-count="21"></span></a>
+      <a class="tile" href="#" style="--c:var(--c-sec)"><span class="sq" data-icon="sec"></span><span class="n" data-i18n="sec.sec">Кібербезпека</span><span class="c" data-plural="topic" data-count="9"></span></a>
+      <a class="tile" href="#" style="--c:var(--c-matura)"><span class="sq" data-icon="matura"></span><span class="n" data-i18n="sec.matura">Підготовка до матури</span><span class="c" data-plural="topic" data-count="32"></span></a>
+      <a class="tile" href="#" style="--c:var(--c-gloss)"><span class="sq" data-icon="gloss"></span><span class="n" data-i18n="sec.gloss">Глосарій</span><span class="c">A–Z · 214</span></a>
+    </div>
+  </section>
+
+  <!-- new materials -->
+  <section aria-labelledby="h-new">
+    <div class="sh"><h2 id="h-new" data-i18n="new.title">Нові матеріали</h2><a href="#"><span data-i18n="new.all">Увесь каталог</span></a></div>
+    <div class="mats">
+      <a class="mat" href="#" style="--c:var(--c-alg)" data-avail="uk,pl,en">
+        <span class="row"><span class="dot"></span><span data-i18n="sec.alg">Алгоритми</span> · <span data-i18n="cls" data-n="2">2 клас</span><span class="type" data-i18n="type.material">Матеріал</span></span>
+        <h3 data-title data-i18n="mat1">Бінарний пошук</h3><span class="tr-slot"></span>
+        <span class="foot"><span class="lvl" data-l="2"><i><b></b><b></b><b></b></i><span data-i18n="lvl.2">Середній</span></span><span data-i18n="min" data-n="12">12 хв</span></span>
+      </a>
+      <a class="mat" href="#" style="--c:var(--c-db)" data-avail="uk,en">
+        <span class="row"><span class="dot"></span><span data-i18n="sec.db">Бази даних</span> · <span data-i18n="cls" data-n="3">3 клас</span><span class="type" data-i18n="type.exercise">Вправа</span></span>
+        <h3 data-title data-i18n="mat2">SQL JOIN на прикладах</h3><span class="tr-slot"></span>
+        <span class="foot"><span class="lvl" data-l="2"><i><b></b><b></b><b></b></i><span data-i18n="lvl.2">Середній</span></span><span data-i18n="min" data-n="20">20 хв</span></span>
+      </a>
+      <a class="mat" href="#" style="--c:var(--c-net)" data-avail="uk,pl,en">
+        <span class="row"><span class="dot"></span><span data-i18n="sec.net">Мережі</span> · <span data-i18n="cls" data-n="1">1 клас</span><span class="type" data-i18n="type.test">Тест</span></span>
+        <h3 data-title data-i18n="mat3">TCP і UDP: у чому різниця</h3><span class="tr-slot"></span>
+        <span class="foot"><span class="lvl" data-l="1"><i><b></b><b></b><b></b></i><span data-i18n="lvl.1">Базовий</span></span><span data-i18n="min" data-n="8">8 хв</span></span>
+      </a>
+      <a class="mat" href="#" style="--c:var(--c-prog)" data-avail="uk,pl,en">
+        <span class="row"><span class="dot"></span><span data-i18n="sec.prog">Програмування</span> · <span data-i18n="cls" data-n="3">3 клас</span><span class="type" data-i18n="type.task">Завдання</span></span>
+        <h3 data-title data-i18n="mat4">Рекурсія в Python: задачі</h3><span class="tr-slot"></span>
+        <span class="foot"><span class="lvl" data-l="3"><i><b></b><b></b><b></b></i><span data-i18n="lvl.3">Поглиблений</span></span><span data-i18n="min" data-n="35">35 хв</span></span>
+      </a>
+      <a class="mat" href="#" style="--c:var(--c-sec)" data-avail="uk,pl">
+        <span class="row"><span class="dot"></span><span data-i18n="sec.sec">Кібербезпека</span> · <span data-i18n="cls" data-n="1">1 клас</span><span class="type" data-i18n="type.material">Матеріал</span></span>
+        <h3 data-title data-i18n="mat5">Паролі та хешування</h3><span class="tr-slot"></span>
+        <span class="foot"><span class="lvl" data-l="1"><i><b></b><b></b><b></b></i><span data-i18n="lvl.1">Базовий</span></span><span data-i18n="min" data-n="10">10 хв</span></span>
+      </a>
+      <a class="mat" href="#" style="--c:var(--c-matura)" data-avail="uk,pl,en">
+        <span class="row"><span class="dot"></span><span data-i18n="sec.matura">Матура</span> · <span data-i18n="cls" data-n="4">4 клас</span><span class="type" data-i18n="type.test">Тест</span></span>
+        <h3 data-title data-i18n="mat6">Матура: задачі на рекурсію</h3><span class="tr-slot"></span>
+        <span class="foot"><span class="lvl" data-l="3"><i><b></b><b></b><b></b></i><span data-i18n="lvl.3">Поглиблений</span></span><span data-i18n="min" data-n="45">45 хв</span></span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#" data-i18n="foot.about">Про автора</a>
+    <a href="#privacy" data-cookie-open data-i18n="foot.privacy">Приватність і cookies</a>
+    <a href="#" data-i18n="foot.feedback">Написати вчителю</a>
+    <span data-i18n="foot.made">Зроблено вчителем інформатики · Краків</span>
+    <div class="demo">
+      <label><input type="checkbox" id="demoAuth" data-auth-toggle> <span data-i18n="demo.auth">Демо: учень увійшов</span></label>
+      <span class="variants" role="group" data-i18n-aria="demo.variants"><a href="a-zoshyt.html" aria-current="page">A</a><a href="b-konsol.html">B</a><a href="c-mapa.html">C</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="common.js"></script>
+<script>
+/* Banner animation: bubble sort on bars, one compare/swap per tick */
+(function(){
+  const cv=document.getElementById('sortViz'), ctx=cv.getContext('2d');
+  const N=14; let arr=[], i=0, j=0, done=0, timer=null;
+  const reset=()=>{arr=Array.from({length:N},()=>0.15+Math.random()*0.85);i=0;j=0;done=0;};
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  function draw(active){
+    const r=cv.getBoundingClientRect(), dpr=devicePixelRatio||1;
+    if(cv.width!==Math.round(r.width*dpr)){cv.width=r.width*dpr;cv.height=r.height*dpr;}
+    ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,r.width,r.height);
+    const pad=28, w=(r.width-pad*2)/N, base=r.height-pad, h=r.height-pad*2-20;
+    arr.forEach((v,k)=>{
+      const sorted=k>=N-done;
+      ctx.fillStyle= active&&(k===active[0]||k===active[1]) ? css('--accent') : sorted ? css('--c-prog') : 'rgba(255,255,255,.28)';
+      ctx.beginPath(); ctx.roundRect(pad+k*w+3, base-v*h, w-6, v*h, 4); ctx.fill();
+    });
+    ctx.fillStyle='rgba(255,255,255,.55)'; ctx.font='12px '+css('--font-mono');
+    ctx.fillText('bubble_sort · i='+i+' j='+j, pad, pad-6);
+  }
+  function step(){
+    if(done>=N-1){ done=N; draw(); setTimeout(reset,1400); return; }
+    const a=j,b=j+1; if(arr[a]>arr[b]){[arr[a],arr[b]]=[arr[b],arr[a]];}
+    draw([a,b]); j++; if(j>=N-1-i){j=0;i++;done++;}
+  }
+  function start(){ clearInterval(timer); if(InfoDemo.motionOff()){ arr.sort((x,y)=>x-y); done=N; draw(); return; } timer=setInterval(step,170); }
+  reset(); draw(); start();
+  document.addEventListener('motionchange',start); addEventListener('resize',()=>draw());
+})();
+</script>
+</body>
+</html>

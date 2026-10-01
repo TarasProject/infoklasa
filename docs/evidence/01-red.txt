@@ -1,0 +1,146 @@
+﻿pnpm.exe : $ vitest run
+At C:\Users\Taras\AppData\Roaming\npm\pnpm.ps1:14 char:3
++   & "$basedir/node_modules/pnpm/pnpm.exe"   $args
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ($ vitest run:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+ RUN  v5.0.3 G:/crash_course_agentic_engineering_2026/myprojectfull/infoklasa
+
+ ❯ lib/localize.test.ts (0 test)
+ ❯ messages/messages.test.ts (0 test)
+ ❯ lib/search.test.ts (0 test)
+ ❯ lib/bubble-sort.test.ts (0 test)
+ ❯ lib/prefs.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  lib/bubble-sort.test.ts [ lib/bubble-sort.test.ts ]
+Error: Failed to resolve import "./bubble-sort" from "lib/bubble-sort.test.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: G:/crash_course_agentic_engineering_2026/myprojectfull/infoklasa/lib/bubble-sort.test.ts:2:37
+  1  |  import { describe, expect, test } from "vitest";
+  2  |  import { createSort, stepSort } from "./bubble-sort";
+     |                                        ^
+  3  |  // Spec: docs/spec/home-page.md · HP-8
+  4  |  describe("bubble sort, one comparison per step", () => {
+ ❯ TransformPluginContext._formatLog node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chu
+nks/node.js:8736:39
+ ❯ TransformPluginContext.error node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/n
+ode.js:8733:14
+ ❯ normalizeUrl node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:26423:18
+ ❯ node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:26493:30
+ ❯ TransformPluginContext.transform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chun
+ks/node.js:26459:4
+ ❯ EnvironmentPluginContainer.transform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/
+chunks/node.js:8515:14
+ ❯ loadAndTransform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:19998
+:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  lib/localize.test.ts [ lib/localize.test.ts ]
+Error: Failed to resolve import "./localize" from "lib/localize.test.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: G:/crash_course_agentic_engineering_2026/myprojectfull/infoklasa/lib/localize.test.ts:2:25
+  1  |  import { describe, expect, test } from "vitest";
+  2  |  import { localize } from "./localize";
+     |                            ^
+  3  |  // Spec: docs/spec/home-page.md · HP-4
+  4  |  describe("localize", () => {
+ ❯ TransformPluginContext._formatLog node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chu
+nks/node.js:8736:39
+ ❯ TransformPluginContext.error node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/n
+ode.js:8733:14
+ ❯ normalizeUrl node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:26423:18
+ ❯ node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:26493:30
+ ❯ TransformPluginContext.transform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chun
+ks/node.js:26459:4
+ ❯ EnvironmentPluginContainer.transform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/
+chunks/node.js:8515:14
+ ❯ loadAndTransform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:19998
+:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  lib/prefs.test.ts [ lib/prefs.test.ts ]
+Error: Failed to resolve import "./prefs" from "lib/prefs.test.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: G:/crash_course_agentic_engineering_2026/myprojectfull/infoklasa/lib/prefs.test.ts:2:61
+  1  |  import { describe, expect, test } from "vitest";
+  2  |  import { nextTheme, parseA11y, parseTheme, toggleA11y } from "./prefs";
+     |                                                                ^
+  3  |  // Spec: docs/spec/home-page.md · HP-6
+  4  |  describe("theme", () => {
+ ❯ TransformPluginContext._formatLog node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chu
+nks/node.js:8736:39
+ ❯ TransformPluginContext.error node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/n
+ode.js:8733:14
+ ❯ normalizeUrl node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:26423:18
+ ❯ node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:26493:30
+ ❯ TransformPluginContext.transform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chun
+ks/node.js:26459:4
+ ❯ EnvironmentPluginContainer.transform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/
+chunks/node.js:8515:14
+ ❯ loadAndTransform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:19998
+:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  lib/search.test.ts [ lib/search.test.ts ]
+Error: Failed to resolve import "./search" from "lib/search.test.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: G:/crash_course_agentic_engineering_2026/myprojectfull/infoklasa/lib/search.test.ts:2:42
+  1  |  import { describe, expect, test } from "vitest";
+  2  |  import { filterEntries, splitMatch } from "./search";
+     |                                             ^
+  3  |  // Spec: docs/spec/home-page.md · HP-5
+  4  |  const entries = [
+ ❯ TransformPluginContext._formatLog node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chu
+nks/node.js:8736:39
+ ❯ TransformPluginContext.error node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/n
+ode.js:8733:14
+ ❯ normalizeUrl node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:26423:18
+ ❯ node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:26493:30
+ ❯ TransformPluginContext.transform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chun
+ks/node.js:26459:4
+ ❯ EnvironmentPluginContainer.transform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/
+chunks/node.js:8515:14
+ ❯ loadAndTransform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:19998
+:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  messages/messages.test.ts [ messages/messages.test.ts ]
+Error: Failed to resolve import "./pl.json" from "messages/messages.test.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: G:/crash_course_agentic_engineering_2026/myprojectfull/infoklasa/messages/messages.test.ts:4:15
+  2  |  import { createTranslator } from "next-intl";
+  3  |  import uk from "./uk.json";
+  4  |  import pl from "./pl.json";
+     |                  ^
+  5  |  import en from "./en.json";
+  6  |  const all = {
+ ❯ TransformPluginContext._formatLog node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chu
+nks/node.js:8736:39
+ ❯ TransformPluginContext.error node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/n
+ode.js:8733:14
+ ❯ normalizeUrl node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:26423:18
+ ❯ node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:26493:30
+ ❯ TransformPluginContext.transform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chun
+ks/node.js:26459:4
+ ❯ EnvironmentPluginContainer.transform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/
+chunks/node.js:8515:14
+ ❯ loadAndTransform node_modules/.pnpm/vite@8.3.1_@types+node@20.19.43/node_modules/vite/dist/node/chunks/node.js:19998
+:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  5 failed (5)
+      Tests  no tests
+   Start at  01:48:09
+   Duration  1.77s (environment 99%, worker 1%)
+
+[ELIFECYCLE] Test failed. See above for more details.

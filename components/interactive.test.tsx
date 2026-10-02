@@ -2,6 +2,8 @@ import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";
 import uk from "@/messages/uk.json";
+import { forgetStored, openCookieNotice } from "./browser-store";
+import CookieNotice from "./CookieNotice";
 import Header from "./Header";
 import SearchPalette from "./SearchPalette";
 import SearchTrigger from "./SearchTrigger";
@@ -34,6 +36,7 @@ const press = (key: string, init: KeyboardEventInit = {}) =>
 
 beforeEach(() => {
   localStorage.clear();
+  forgetStored();
   document.documentElement.removeAttribute("data-theme");
   document.documentElement.className = "";
   push.mockClear();
@@ -55,6 +58,13 @@ describe("search palette", () => {
 
     press("Escape");
     expect(screen.queryByRole("dialog")).toBeNull();
+  });
+
+  // Review 01, finding 5: with the Ukrainian layout on, Ctrl+K arrives as key "л".
+  test("Ctrl+K works with the Ukrainian keyboard layout", () => {
+    renderUk(<SearchPalette />);
+    press("л", { ctrlKey: true, code: "KeyK" });
+    expect(screen.getByRole("dialog")).toBeTruthy();
   });
 
   test('"/" opens it, but not while the visitor is typing in a field', () => {
@@ -154,6 +164,18 @@ describe("header controls", () => {
     expect(root.classList.contains("a11y-motion")).toBe(false);
   });
 
+  // Review 01, finding 4: keyboard users must not lose their place.
+  test("closing the accessibility panel with Esc returns focus to its button", () => {
+    renderUk(<Header />);
+    const toggle = screen.getByRole("button", { name: "Налаштування доступності" });
+    fireEvent.click(toggle);
+    expect(document.activeElement?.getAttribute("role")).toBe("switch");
+
+    press("Escape");
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(document.activeElement).toBe(toggle);
+  });
+
   test("the language switch links to the same page in every language", () => {
     renderUk(<Header />);
     const links = screen.getByRole("navigation", { name: "Мова" }).querySelectorAll("a");
@@ -163,5 +185,21 @@ describe("header controls", () => {
       ["EN", "/en/"],
     ]);
     expect(links[0]?.getAttribute("aria-current")).toBe("true");
+  });
+});
+
+// Spec: docs/spec/home-page.md · HP-10. Review 01, finding 7.
+describe("cookie notice", () => {
+  test("reopened settings show the saved answer, so Save does not change it", () => {
+    localStorage.setItem("infoklasa.cookie", "all");
+    renderUk(<CookieNotice />);
+    expect(screen.queryByRole("button", { name: "Прийняти" })).toBeNull();
+
+    act(() => openCookieNotice());
+    fireEvent.click(screen.getByRole("button", { name: "Налаштувати" }));
+    expect((screen.getByRole("checkbox", { name: "Анонімна статистика відвідувань" }) as HTMLInputElement).checked).toBe(true);
+
+    fireEvent.click(screen.getByRole("button", { name: "Зберегти вибір" }));
+    expect(localStorage.getItem("infoklasa.cookie")).toBe("all");
   });
 });

@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# infoklasa — сайт вчителя інформатики
 
-## Getting Started
+Навчальний сайт для учнів ліцею в Кракові: матеріали, тести й вправи з інформатики
+трьома мовами — українською, польською та англійською.
 
-First, run the development server:
+**Що вже є:** головна сторінка (`/uk`, `/pl`, `/en`) за дизайном «Зошит»: перемикач мови,
+світла/темна тема, панель доступності, швидкий пошук (`Ctrl+K`), банер з анімацією
+сортування, розділи, нові матеріали, повідомлення про cookies. Усі інші посилання ведуть
+на сторінку «Розділ у розробці». Дані поки зразкові — у `content/home.ts`.
+
+**Що далі:** `docs/backlog.md` (каталог тем, база даних, адмін-панель, тести для учнів…).
+
+## Запуск
+
+Потрібні Node 24 і pnpm.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev          # http://localhost:3000 → перенаправить на /uk
+pnpm check        # перевірка типів + лінтер + тести — має бути зеленим
+pnpm build        # продакшн-збірка
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Де що лежить
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Шлях | Що там |
+|---|---|
+| `app/[locale]/` | сторінки: `layout.tsx` (шапка, футер, шрифти), `page.tsx` (головна), `[...rest]/page.tsx` («у розробці») |
+| `components/` | шапка, пошук, панель доступності, банер, cookies; `HomeView.tsx` — уся головна |
+| `messages/{uk,pl,en}.json` | усі тексти інтерфейсу; ключі в трьох файлах мають збігатися (це перевіряє тест) |
+| `content/home.ts` | зразкові розділи, матеріали й записи для пошуку |
+| `lib/` | чиста логіка з тестами: запасна мова, пошук, сортування, налаштування |
+| `app/globals.css` | дизайн «Зошит»: кольори-токени світлої й темної тем, режими доступності |
+| `docs/spec/home-page.md` | специфікація головної (HP-1…HP-12), написана до коду |
+| `docs/autonomy-log.md` | журнал: що робив агент, що вирішувала людина |
+| `docs/design/a-zoshyt.html` | еталон дизайну (статичне демо) |
+| `AGENTS.md`, `CLAUDE.md`, `.claude/` | правила й хуки для AI-агента |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Як додати текст або переклад
 
-## Learn More
+1. Додай ключ у **всі три** файли `messages/uk.json`, `pl.json`, `en.json`.
+2. У компоненті: `t("розділ.ключ")`.
+3. `pnpm check` — якщо ключ забув в одній мові, тест назве мову й ключ.
 
-To learn more about Next.js, take a look at the following resources:
+## Як працювати з агентом
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Відкривай у редакторі саме папку `infoklasa/` — тоді Claude Code читає `AGENTS.md`, а хуки
+записують кожну дію агента в `.agent-log/actions.jsonl` (`pnpm agent:log` — підсумок).

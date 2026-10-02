@@ -42,6 +42,11 @@ export function writeStored(key: string, value: string) {
   listeners.forEach((listener) => listener());
 }
 
+/** Drops the copies kept for this visit, so the next read goes to localStorage again. */
+export function forgetStored() {
+  memory.clear();
+}
+
 /** Raw stored value, or null on the server and when nothing is stored yet. */
 export function useStored(key: string): string | null {
   return useSyncExternalStore(

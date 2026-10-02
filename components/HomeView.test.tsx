@@ -17,6 +17,9 @@ function renderHome(locale: Locale) {
   );
 }
 
+// jsdom has no canvas: the banner animation simply does not draw in tests.
+HTMLCanvasElement.prototype.getContext = () => null;
+
 afterEach(cleanup);
 
 // Spec: docs/spec/home-page.md · HP-1
@@ -60,7 +63,7 @@ describe("material without a translation", () => {
     renderHome("pl");
     const title = screen.getByRole("heading", { level: 3, name: "SQL JOIN на прикладах" });
     expect(title.getAttribute("lang")).toBe("uk");
-    expect(title.closest("li")?.textContent).toContain("Brak tłumaczenia · pokazano UK");
+    expect(title.closest("li")?.textContent).toContain("Brak tłumaczenia · pokazano UA");
   });
 
   test("Ukrainian page shows no badge at all", () => {

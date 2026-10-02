@@ -11,5 +11,7 @@ export default defineConfig({
     environment: "jsdom",
     include: ["**/*.test.{ts,tsx}"],
     exclude: ["node_modules", ".next", ".agents", ".claude"],
+    // next-intl imports "next/navigation" without a file extension; Vite has to bundle it to resolve that.
+    server: { deps: { inline: ["next-intl"] } },
   },
 });

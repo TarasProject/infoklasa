@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { a11yModes, parseA11y, toggleA11y } from "@/lib/prefs";
-import { useStored, writeStored } from "./browser-store";
+import { useInBrowser, useStored, writeStored } from "./browser-store";
 import Icon from "./Icon";
 
 export const A11Y_PANEL_ID = "a11y-panel";
@@ -11,6 +12,7 @@ export const A11Y_PANEL_ID = "a11y-panel";
 /** Five accessibility switches. Each one adds a class such as `a11y-large` to <html>; the styles are in globals.css. */
 export default function A11yPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
   const t = useTranslations();
+  const inBrowser = useInBrowser();
   const stored = useStored("a11y");
   const active = parseA11y(stored);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -40,7 +42,11 @@ export default function A11yPanel({ open, onClose }: { open: boolean; onClose: (
     };
   }, [open, onClose]);
 
-  return (
+  if (!inBrowser) return null;
+
+  // Rendered into <body>: inside the header (which has backdrop-filter) `position:fixed`
+  // would be measured from the header and the panel would leave the screen on phones.
+  return createPortal(
     <div className="x-pop" id={A11Y_PANEL_ID} ref={panelRef} role="dialog" aria-labelledby="a11y-title" hidden={!open}>
       <div className="x-pop-head">
         <h2 id="a11y-title">{t("a11y.title")}</h2>
@@ -64,6 +70,7 @@ export default function A11yPanel({ open, onClose }: { open: boolean; onClose: (
       <button className="btn ghost" type="button" onClick={() => writeStored("a11y", "[]")}>
         {t("a11y.reset")}
       </button>
-    </div>
+    </div>,
+    document.body,
   );
 }

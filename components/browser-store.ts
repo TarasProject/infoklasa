@@ -10,8 +10,9 @@ const memory = new Map<string, string>();
 
 function subscribe(listener: () => void) {
   const onStorage = (event: StorageEvent) => {
-    // Another tab changed a value: forget our copy and read again.
-    if (event.key?.startsWith(PREFIX)) memory.delete(event.key.slice(PREFIX.length));
+    // Another tab changed a value (key null = it cleared everything): forget our copy and read again.
+    if (event.key === null) memory.clear();
+    else if (event.key.startsWith(PREFIX)) memory.delete(event.key.slice(PREFIX.length));
     listener();
   };
   listeners.add(listener);

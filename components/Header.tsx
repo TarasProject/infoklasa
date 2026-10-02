@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { localeLabels, locales } from "@/lib/locales";
@@ -23,7 +23,12 @@ export default function Header() {
   const pathname = usePathname();
   const theme = parseTheme(useStored("theme"));
   const [a11yOpen, setA11yOpen] = useState(false);
-  const closeA11y = useCallback(() => setA11yOpen(false), []);
+  const a11yButton = useRef<HTMLButtonElement>(null);
+  const closeA11y = useCallback(() => {
+    setA11yOpen(false);
+    // If the focus was inside the panel, give it back to the button that opened it.
+    if (document.getElementById(A11Y_PANEL_ID)?.contains(document.activeElement)) a11yButton.current?.focus();
+  }, []);
 
   // "auto" = no attribute, the system setting decides (see the tokens in globals.css).
   useEffect(() => {
@@ -76,6 +81,7 @@ export default function Header() {
               <Icon name="theme" />
             </button>
             <button
+              ref={a11yButton}
               className="ibtn"
               type="button"
               aria-label={t("a11y.open")}

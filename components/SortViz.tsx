@@ -48,12 +48,12 @@ export default function SortViz() {
       state.values.forEach((value, index) => {
         const isActive = state.active?.includes(index);
         const isSorted = index >= count - state.sorted;
-        ctx.fillStyle = isActive ? token("--accent") : isSorted ? token("--c-prog") : "rgba(255,255,255,.28)";
+        ctx.fillStyle = isActive ? token("--accent") : isSorted ? token("--c-prog") : token("--viz-bar");
         ctx.beginPath();
         ctx.roundRect(pad + index * barWidth + 3, base - value * maxHeight, barWidth - 6, value * maxHeight, 4);
         ctx.fill();
       });
-      ctx.fillStyle = "rgba(255,255,255,.55)";
+      ctx.fillStyle = token("--viz-label");
       ctx.font = `12px ${token("--font-mono")}`;
       ctx.fillText(`bubble_sort · sorted=${state.sorted}/${count}`, pad, pad - 6);
     };

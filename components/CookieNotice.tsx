@@ -59,7 +59,15 @@ export default function CookieNotice() {
             {t("save")}
           </button>
         ) : (
-          <button className="btn ghost" type="button" onClick={() => setSettingsOpen(true)}>
+          <button
+            className="btn ghost"
+            type="button"
+            onClick={() => {
+              // Start from what the visitor chose last time, so "Save" keeps it unless they change it.
+              setStats(answer === "all");
+              setSettingsOpen(true);
+            }}
+          >
             {t("settings")}
           </button>
         )}

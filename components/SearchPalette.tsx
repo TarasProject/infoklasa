@@ -39,7 +39,8 @@ export default function SearchPalette() {
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
-      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+      // `code` is the physical key: with the Ukrainian layout `key` is "л".
+      if ((event.ctrlKey || event.metaKey) && (event.code === "KeyK" || event.key.toLowerCase() === "k")) {
         event.preventDefault();
         if (open) close();
         else show();
@@ -56,11 +57,10 @@ export default function SearchPalette() {
 
   if (!open) return null;
 
-  const entries = searchIndex.map((item) => ({
-    ...item,
-    title: localize(item.title, locale).text,
-    sectionName: t(`sections.${item.section}`),
-  }));
+  const entries = searchIndex.map((item) => {
+    const title = localize(item.title, locale);
+    return { ...item, title: title.text, lang: title.lang, sectionName: t(`sections.${item.section}`) };
+  });
   const results = filterEntries(entries, query);
   const current = Math.min(selected, Math.max(results.length - 1, 0));
 
@@ -72,7 +72,9 @@ export default function SearchPalette() {
   };
 
   const onInputKey = (event: ReactKeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "ArrowDown") {
+    if ((event.key === "ArrowDown" || event.key === "ArrowUp") && results.length === 0) {
+      event.preventDefault();
+    } else if (event.key === "ArrowDown") {
       event.preventDefault();
       setSelected(Math.min(current + 1, results.length - 1));
     } else if (event.key === "ArrowUp") {
@@ -137,7 +139,7 @@ export default function SearchPalette() {
                   onClick={() => choose(index)}
                 >
                   <span className="dot" style={{ background: `var(--c-${item.section})` }} />
-                  <span className="ttl">
+                  <span className="ttl" lang={item.lang}>
                     {parts ? (
                       <>
                         {parts.before}

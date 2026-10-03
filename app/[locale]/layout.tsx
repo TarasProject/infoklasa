@@ -6,14 +6,22 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import CookieNotice from "@/components/CookieNotice";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import InlineScript from "@/components/InlineScript";
 import SearchPalette from "@/components/SearchPalette";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
+// The text font of the whole first screen: preloaded.
 const onest = Onest({ subsets: ["latin", "latin-ext", "cyrillic"], variable: "--font-onest" });
-const jetbrains = JetBrains_Mono({ subsets: ["latin", "latin-ext", "cyrillic"], variable: "--font-jetbrains" });
-// Used only by the "dyslexia-friendly font" accessibility mode.
-const lexend = Lexend({ subsets: ["latin", "latin-ext"], variable: "--font-lexend" });
+// Not preloaded: on the first screen only the small "Ctrl K" key cap uses it (desktop only);
+// the browser fetches it when that text is drawn and shows a fallback until then.
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  variable: "--font-jetbrains",
+  preload: false,
+});
+// Not preloaded: used only after the visitor turns on the "dyslexia-friendly font" mode.
+const lexend = Lexend({ subsets: ["latin", "latin-ext"], variable: "--font-lexend", preload: false });
 
 // Runs before the first paint, so a saved dark theme or accessibility mode never flashes.
 // Keep the key names and the mode list in sync with lib/prefs.ts and components/browser-store.ts.
@@ -41,7 +49,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
     // The font variables must sit on <html>: the tokens in globals.css read them at :root.
     <html lang={locale} className={`${onest.variable} ${jetbrains.variable} ${lexend.variable}`} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: applySavedPrefs }} />
+        <InlineScript html={applySavedPrefs} />
       </head>
       <body>
         <NextIntlClientProvider>

@@ -1,8 +1,13 @@
 export const themes = ["auto", "light", "dark"] as const;
 export type Theme = (typeof themes)[number];
 
-export function nextTheme(theme: Theme): Theme {
-  return themes[(themes.indexOf(theme) + 1) % themes.length]!;
+/**
+ * The theme the button switches to: always the opposite of what is on screen now.
+ * "auto" shows the system theme, so it lasts only until the first click.
+ */
+export function toggleTheme(theme: Theme, systemPrefersDark: boolean): "light" | "dark" {
+  const shown = theme === "auto" ? (systemPrefersDark ? "dark" : "light") : theme;
+  return shown === "dark" ? "light" : "dark";
 }
 
 export function parseTheme(raw: string | null): Theme {

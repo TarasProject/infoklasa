@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { a11yModes, parseA11y, toggleA11y } from "@/lib/prefs";
@@ -17,7 +17,8 @@ export default function A11yPanel({ open, onClose }: { open: boolean; onClose: (
   const active = parseA11y(stored);
   const panelRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  // Before paint, for the same reason as the theme in Header.tsx (Strict Mode remount wipes <html> classes).
+  useLayoutEffect(() => {
     const on = parseA11y(stored);
     for (const mode of a11yModes) document.documentElement.classList.toggle(`a11y-${mode}`, on.includes(mode));
   }, [stored]);

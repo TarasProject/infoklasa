@@ -68,22 +68,27 @@ export function useInBrowser(): boolean {
   );
 }
 
-const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
-
-// `matchMedia` is missing in very old browsers and in the test environment: treat that as "motion allowed".
-function subscribeMotion(listener: () => void) {
-  const query = window.matchMedia?.(REDUCED_MOTION);
-  query?.addEventListener("change", listener);
-  return () => query?.removeEventListener("change", listener);
+// `matchMedia` is missing in very old browsers and in the test environment: treat that as "no match".
+function useMediaQuery(media: string): boolean {
+  return useSyncExternalStore(
+    (listener) => {
+      const query = window.matchMedia?.(media);
+      query?.addEventListener("change", listener);
+      return () => query?.removeEventListener("change", listener);
+    },
+    () => window.matchMedia?.(media).matches ?? false,
+    () => false,
+  );
 }
 
 /** True when the operating system asks for less motion. */
 export function useSystemReducedMotion(): boolean {
-  return useSyncExternalStore(
-    subscribeMotion,
-    () => window.matchMedia?.(REDUCED_MOTION).matches ?? false,
-    () => false,
-  );
+  return useMediaQuery("(prefers-reduced-motion: reduce)");
+}
+
+/** True when the operating system uses a dark theme. */
+export function useSystemDark(): boolean {
+  return useMediaQuery("(prefers-color-scheme: dark)");
 }
 
 // Messages between components that do not know each other (hero button → search palette).

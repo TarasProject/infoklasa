@@ -1,12 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { localeLabels, locales } from "@/lib/locales";
-import { nextTheme, parseTheme } from "@/lib/prefs";
+import { parseTheme, toggleTheme } from "@/lib/prefs";
 import A11yPanel, { A11Y_PANEL_ID } from "./A11yPanel";
-import { openSearch, useStored, writeStored } from "./browser-store";
+import { openSearch, useStored, useSystemDark, writeStored } from "./browser-store";
 import Icon from "./Icon";
 
 const navItems = [
@@ -22,6 +22,7 @@ export default function Header() {
   const locale = useLocale();
   const pathname = usePathname();
   const theme = parseTheme(useStored("theme"));
+  const systemDark = useSystemDark();
   const [a11yOpen, setA11yOpen] = useState(false);
   const a11yButton = useRef<HTMLButtonElement>(null);
   const closeA11y = useCallback(() => {
@@ -31,7 +32,9 @@ export default function Header() {
   }, []);
 
   // "auto" = no attribute, the system setting decides (see the tokens in globals.css).
-  useEffect(() => {
+  // Layout effect = before paint. In development React's Strict Mode remounts <html> and wipes
+  // the attribute the inline script set; this puts it back before the visitor sees anything.
+  useLayoutEffect(() => {
     const root = document.documentElement;
     if (theme === "auto") root.removeAttribute("data-theme");
     else root.setAttribute("data-theme", theme);
@@ -76,7 +79,7 @@ export default function Header() {
               type="button"
               aria-label={`${t("theme.label")}: ${t(`theme.${theme}`)}`}
               title={`${t("theme.label")}: ${t(`theme.${theme}`)}`}
-              onClick={() => writeStored("theme", nextTheme(theme))}
+              onClick={() => writeStored("theme", toggleTheme(theme, systemDark))}
             >
               <Icon name="theme" />
             </button>

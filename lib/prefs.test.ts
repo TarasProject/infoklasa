@@ -1,12 +1,21 @@
 import { describe, expect, test } from "vitest";
-import { nextTheme, parseA11y, parseTheme, toggleA11y } from "./prefs";
+import { parseA11y, parseTheme, toggleA11y, toggleTheme } from "./prefs";
 
 // Spec: docs/spec/home-page.md · HP-6
 describe("theme", () => {
-  test("cycles auto → light → dark → auto", () => {
-    expect(nextTheme("auto")).toBe("light");
-    expect(nextTheme("light")).toBe("dark");
-    expect(nextTheme("dark")).toBe("auto");
+  test("auto on a light system: the first click turns the page dark", () => {
+    expect(toggleTheme("auto", false)).toBe("dark");
+  });
+
+  test("auto on a dark system: the first click turns the page light", () => {
+    expect(toggleTheme("auto", true)).toBe("light");
+  });
+
+  test("after the first click it alternates light ↔ dark whatever the system says", () => {
+    for (const systemDark of [false, true]) {
+      expect(toggleTheme("dark", systemDark)).toBe("light");
+      expect(toggleTheme("light", systemDark)).toBe("dark");
+    }
   });
 
   test("reads a stored value", () => {

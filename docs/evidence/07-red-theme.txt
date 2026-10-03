@@ -1,0 +1,74 @@
+$ vitest run
+
+ RUN  v5.0.3 G:/crash_course_agentic_engineering_2026/myprojectfull/infoklasa
+
+ ❯ lib/prefs.test.ts (10 tests | 3 failed) 13ms
+   ❯ theme (5)
+     × auto on a light system: the first click turns the page dark 6ms
+     × auto on a dark system: the first click turns the page light 1ms
+     × after the first click it alternates light ↔ dark whatever the system says 1ms
+ ❯ components/interactive.test.tsx (13 tests | 1 failed) 372ms
+   ❯ header controls (5)
+     × light system: the first click turns the page dark, the next one light 31ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  components/interactive.test.tsx > header controls > light system: the first click turns the page dark, the next one light
+AssertionError: expected 'light' to be 'dark' // Object.is equality
+
+Expected: "dark"
+Received: "light"
+
+ ❯ components/interactive.test.tsx:153:45
+    151|
+    152|     fireEvent.click(button());
+    153|     expect(root.getAttribute("data-theme")).toBe("dark");
+       |                                             ^
+    154|     expect(localStorage.getItem("infoklasa.theme")).toBe("dark");
+    155|     fireEvent.click(button());
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  lib/prefs.test.ts > theme > auto on a light system: the first click turns the page dark
+TypeError: toggleTheme is not a function
+ ❯ lib/prefs.test.ts:7:12
+      5| describe("theme", () => {
+      6|   test("auto on a light system: the first click turns the page dark", …
+      7|     expect(toggleTheme("auto", false)).toBe("dark");
+       |            ^
+      8|   });
+      9|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  lib/prefs.test.ts > theme > auto on a dark system: the first click turns the page light
+TypeError: toggleTheme is not a function
+ ❯ lib/prefs.test.ts:11:12
+      9|
+     10|   test("auto on a dark system: the first click turns the page light", …
+     11|     expect(toggleTheme("auto", true)).toBe("light");
+       |            ^
+     12|   });
+     13|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  lib/prefs.test.ts > theme > after the first click it alternates light ↔ dark whatever the system says
+TypeError: toggleTheme is not a function
+ ❯ lib/prefs.test.ts:16:14
+     14|   test("after the first click it alternates light ↔ dark whatever the …
+     15|     for (const systemDark of [false, true]) {
+     16|       expect(toggleTheme("dark", systemDark)).toBe("light");
+       |              ^
+     17|       expect(toggleTheme("light", systemDark)).toBe("dark");
+     18|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  2 failed | 6 passed (8)
+      Tests  4 failed | 58 passed (62)
+   Start at  02:27:39
+   Duration  2.68s (environment 84%, transform 5%, tests 5%, import 5%)
+
+[ELIFECYCLE] Test failed. See above for more details.

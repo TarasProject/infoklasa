@@ -29,6 +29,16 @@ function renderUk(ui: React.ReactNode) {
   );
 }
 
+/** Pretends the operating system uses a dark (true) or light (false) theme. */
+function systemDark(dark: boolean) {
+  window.matchMedia = ((query: string) => ({
+    matches: dark && query.includes("dark"),
+    media: query,
+    addEventListener: () => {},
+    removeEventListener: () => {},
+  })) as unknown as typeof window.matchMedia;
+}
+
 const press = (key: string, init: KeyboardEventInit = {}) =>
   act(() => {
     document.dispatchEvent(new KeyboardEvent("keydown", { key, bubbles: true, cancelable: true, ...init }));
@@ -131,19 +141,26 @@ describe("search palette", () => {
 
 // Spec: docs/spec/home-page.md · HP-6, HP-7
 describe("header controls", () => {
-  test("the theme button cycles auto → light → dark → auto and saves the choice", () => {
+  // Found by the site owner in a manual test: on a light system the first click changed nothing.
+  test("light system: the first click turns the page dark, the next one light", () => {
+    systemDark(false);
     renderUk(<Header />);
     const root = document.documentElement;
     const button = () => screen.getByRole("button", { name: /^Тема:/ });
     expect(button().getAttribute("aria-label")).toBe("Тема: Авто");
 
     fireEvent.click(button());
-    expect(root.getAttribute("data-theme")).toBe("light");
-    fireEvent.click(button());
     expect(root.getAttribute("data-theme")).toBe("dark");
     expect(localStorage.getItem("infoklasa.theme")).toBe("dark");
     fireEvent.click(button());
-    expect(root.hasAttribute("data-theme")).toBe(false);
+    expect(root.getAttribute("data-theme")).toBe("light");
+  });
+
+  test("dark system: the first click turns the page light", () => {
+    systemDark(true);
+    renderUk(<Header />);
+    fireEvent.click(screen.getByRole("button", { name: /^Тема:/ }));
+    expect(document.documentElement.getAttribute("data-theme")).toBe("light");
   });
 
   test("an accessibility switch adds its class to <html>, reset removes all", () => {

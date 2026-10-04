@@ -13,7 +13,7 @@
       'hero.title': 'Інформатика, яку зручно вчити', 'hero.sub': 'Теорія, тести й вправи до кожної теми — в одному місці. Прочитай і одразу перевір себе.', 'hero.q': 'Що вчимо сьогодні?',
       'banner.admin': 'Банер · керує адміністратор',
       'banner1.kicker': 'Тиждень алгоритмів', 'banner1.title': 'Сортування наживо: подивись на кожен крок', 'banner1.text': 'Бульбашкою, вставками, злиттям — порівняй, скільки кроків робить кожен алгоритм.', 'banner1.cta': 'Відкрити тему',
-      'banner2.kicker': 'Тиждень мереж', 'banner2.title': 'Як пакет долітає з Кракова до Києва', 'banner2.text': 'Маршрутизатори, TTL і traceroute — прослідкуй шлях одного пакета.', 'banner2.cta': 'Прокласти маршрут',
+      'banner2.kicker': 'Тиждень мереж', 'banner2.title': 'Як пакет долітає до сервера', 'banner2.text': 'Маршрутизатори, TTL і traceroute — прослідкуй шлях одного пакета.', 'banner2.cta': 'Прокласти маршрут',
       'banner3.kicker': 'Нове на сайті', 'banner3.title': 'Python просто в браузері', 'banner3.text': 'Змінюй код у будь-якій темі й натискай «Запустити» — нічого не треба встановлювати.', 'banner3.cta': 'Спробувати', 'run': 'Запустити', 'console': 'Консоль',
       'ann.label': 'Оголошення', 'ann.1': '10–17 жовтня — шкільний етап олімпіади з інформатики', 'ann.2': 'Нова тема: SQL JOIN — вже в каталозі', 'ann.3': '20 жовтня — пробна матура для 2 класу', 'ann.more': 'Усі оголошення', 'ann.important': 'Важливо',
       'sec.title': 'Розділи', 'sec.alg': 'Алгоритми', 'sec.prog': 'Програмування', 'sec.net': 'Мережі', 'sec.db': 'Бази даних', 'sec.hw': "Комп'ютерні системи", 'sec.sec': 'Кібербезпека', 'sec.matura': 'Підготовка до матури', 'sec.gloss': 'Глосарій',
@@ -30,7 +30,7 @@
       'theme.auto': 'Авто', 'theme.light': 'Світла', 'theme.dark': 'Темна', 'theme.label': 'Тема',
       'pal.empty': 'Нічого не знайдено. Спробуй коротше слово або відкрий глосарій.', 'pal.hint': '↑↓ — вибір · Enter — відкрити · Esc — закрити', 'pal.popular': 'Популярне', 'pal.results': 'Результати',
       'demo.auth': 'Демо: учень увійшов', 'demo.variants': 'Варіанти дизайну', 'toast.open': 'Демо: відкриваємо', 'toast.login': 'Демо: magic link надіслано б на email', 'toast.saved': 'Вибір cookies збережено',
-      'foot.about': 'Про автора', 'foot.privacy': 'Приватність і cookies', 'foot.feedback': 'Написати вчителю', 'foot.made': 'Зроблено вчителем інформатики · Краків',
+      'foot.about': 'Про автора', 'foot.privacy': 'Приватність і cookies', 'foot.feedback': 'Написати вчителю', 'foot.made': 'Зроблено вчителем інформатики',
       'g.rec': 'Рекурсія', 'g.hash': 'Хеш-функція', 'g.ip': 'IP-адреса', 'g.pk': 'Первинний ключ', 'g.alg': 'Алгоритм', 'tp.sort': 'Сортування бульбашкою', 'tp.bin': 'Двійкова система числення', 'tp.loops': 'Цикли в Python', 'tp.osi': 'Модель OSI', 'tp.norm': 'Нормалізація баз даних'
     },
     pl: {
@@ -41,7 +41,7 @@
       'hero.title': 'Informatyka, której wygodnie się uczyć', 'hero.sub': 'Teoria, testy i ćwiczenia do każdego tematu — w jednym miejscu. Przeczytaj i od razu sprawdź się.', 'hero.q': 'Czego uczymy się dziś?',
       'banner.admin': 'Baner · zarządza administrator',
       'banner1.kicker': 'Tydzień algorytmów', 'banner1.title': 'Sortowanie na żywo: zobacz każdy krok', 'banner1.text': 'Bąbelkowe, przez wstawianie, przez scalanie — porównaj, ile kroków wykonuje każdy algorytm.', 'banner1.cta': 'Otwórz temat',
-      'banner2.kicker': 'Tydzień sieci', 'banner2.title': 'Jak pakiet leci z Krakowa do Kijowa', 'banner2.text': 'Routery, TTL i traceroute — prześledź drogę jednego pakietu.', 'banner2.cta': 'Wyznacz trasę',
+      'banner2.kicker': 'Tydzień sieci', 'banner2.title': 'Jak pakiet dociera do serwera', 'banner2.text': 'Routery, TTL i traceroute — prześledź drogę jednego pakietu.', 'banner2.cta': 'Wyznacz trasę',
       'banner3.kicker': 'Nowość', 'banner3.title': 'Python prosto w przeglądarce', 'banner3.text': 'Zmieniaj kod w dowolnym temacie i klikaj „Uruchom” — nic nie trzeba instalować.', 'banner3.cta': 'Wypróbuj', 'run': 'Uruchom', 'console': 'Konsola',
       'ann.label': 'Ogłoszenia', 'ann.1': '10–17 października — etap szkolny olimpiady informatycznej', 'ann.2': 'Nowy temat: SQL JOIN — już w katalogu', 'ann.3': '20 października — próbna matura dla klasy 2', 'ann.more': 'Wszystkie ogłoszenia', 'ann.important': 'Ważne',
       'sec.title': 'Działy', 'sec.alg': 'Algorytmy', 'sec.prog': 'Programowanie', 'sec.net': 'Sieci', 'sec.db': 'Bazy danych', 'sec.hw': 'Systemy komputerowe', 'sec.sec': 'Cyberbezpieczeństwo', 'sec.matura': 'Przygotowanie do matury', 'sec.gloss': 'Słowniczek',
@@ -58,7 +58,7 @@
       'theme.auto': 'Auto', 'theme.light': 'Jasny', 'theme.dark': 'Ciemny', 'theme.label': 'Motyw',
       'pal.empty': 'Nic nie znaleziono. Spróbuj krótszego słowa lub otwórz słowniczek.', 'pal.hint': '↑↓ — wybór · Enter — otwórz · Esc — zamknij', 'pal.popular': 'Popularne', 'pal.results': 'Wyniki',
       'demo.auth': 'Demo: uczeń zalogowany', 'demo.variants': 'Warianty projektu', 'toast.open': 'Demo: otwieramy', 'toast.login': 'Demo: magic link zostałby wysłany e-mailem', 'toast.saved': 'Wybór cookies zapisany',
-      'foot.about': 'O autorze', 'foot.privacy': 'Prywatność i cookies', 'foot.feedback': 'Napisz do nauczyciela', 'foot.made': 'Stworzone przez nauczyciela informatyki · Kraków',
+      'foot.about': 'O autorze', 'foot.privacy': 'Prywatność i cookies', 'foot.feedback': 'Napisz do nauczyciela', 'foot.made': 'Stworzone przez nauczyciela informatyki',
       'g.rec': 'Rekurencja', 'g.hash': 'Funkcja skrótu', 'g.ip': 'Adres IP', 'g.pk': 'Klucz główny', 'g.alg': 'Algorytm', 'tp.sort': 'Sortowanie bąbelkowe', 'tp.bin': 'System dwójkowy', 'tp.loops': 'Pętle w Pythonie', 'tp.osi': 'Model OSI', 'tp.norm': 'Normalizacja baz danych'
     },
     en: {
@@ -69,7 +69,7 @@
       'hero.title': 'Computer science that’s easy to learn', 'hero.sub': 'Theory, tests and exercises for every topic — in one place. Read it, then check yourself right away.', 'hero.q': 'What are we learning today?',
       'banner.admin': 'Banner · managed by admin',
       'banner1.kicker': 'Algorithms week', 'banner1.title': 'Sorting, live: watch every step', 'banner1.text': 'Bubble, insertion, merge — compare how many steps each algorithm takes.', 'banner1.cta': 'Open topic',
-      'banner2.kicker': 'Networks week', 'banner2.title': 'How a packet travels from Kraków to Kyiv', 'banner2.text': 'Routers, TTL and traceroute — follow a single packet’s path.', 'banner2.cta': 'Trace the route',
+      'banner2.kicker': 'Networks week', 'banner2.title': 'How a packet reaches a server', 'banner2.text': 'Routers, TTL and traceroute — follow a single packet’s path.', 'banner2.cta': 'Trace the route',
       'banner3.kicker': 'New', 'banner3.title': 'Python, right in your browser', 'banner3.text': 'Edit the code in any topic and press “Run” — nothing to install.', 'banner3.cta': 'Try it', 'run': 'Run', 'console': 'Console',
       'ann.label': 'Announcements', 'ann.1': 'Oct 10–17 — school round of the Informatics Olympiad', 'ann.2': 'New topic: SQL JOIN — now in the catalogue', 'ann.3': 'Oct 20 — mock Matura for grade 2', 'ann.more': 'All announcements', 'ann.important': 'Important',
       'sec.title': 'Sections', 'sec.alg': 'Algorithms', 'sec.prog': 'Programming', 'sec.net': 'Networks', 'sec.db': 'Databases', 'sec.hw': 'Computer systems', 'sec.sec': 'Cybersecurity', 'sec.matura': 'Matura prep', 'sec.gloss': 'Glossary',
@@ -86,7 +86,7 @@
       'theme.auto': 'Auto', 'theme.light': 'Light', 'theme.dark': 'Dark', 'theme.label': 'Theme',
       'pal.empty': 'Nothing found. Try a shorter word or open the glossary.', 'pal.hint': '↑↓ select · Enter open · Esc close', 'pal.popular': 'Popular', 'pal.results': 'Results',
       'demo.auth': 'Demo: student logged in', 'demo.variants': 'Design variants', 'toast.open': 'Demo: opening', 'toast.login': 'Demo: a magic link would be emailed', 'toast.saved': 'Cookie choice saved',
-      'foot.about': 'About the author', 'foot.privacy': 'Privacy & cookies', 'foot.feedback': 'Message the teacher', 'foot.made': 'Made by a computer science teacher · Kraków',
+      'foot.about': 'About the author', 'foot.privacy': 'Privacy & cookies', 'foot.feedback': 'Message the teacher', 'foot.made': 'Made by a computer science teacher',
       'g.rec': 'Recursion', 'g.hash': 'Hash function', 'g.ip': 'IP address', 'g.pk': 'Primary key', 'g.alg': 'Algorithm', 'tp.sort': 'Bubble sort', 'tp.bin': 'Binary number system', 'tp.loops': 'Loops in Python', 'tp.osi': 'OSI model', 'tp.norm': 'Database normalisation'
     }
   };
